@@ -148,8 +148,8 @@ export default function Index() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-accent to-rostelecom py-20 text-white">
         <div className="container relative z-10 px-4">
           <div className="mx-auto max-w-3xl text-center animate-fade-in">
-            <h2 className="text-5xl font-bold mb-4">Ваш проводник в мир быстрого интернета и качественного телевидения</h2>
-            <p className="text-xl mb-8 text-white/90">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ваш проводник в мир быстрого интернета и качественного телевидения</h2>
+            <p className="text-base md:text-lg mb-8 text-white/90">
               Сравните тарифы от ведущих провайдеров и найдите идеальное подключение
             </p>
             <Button size="lg" variant="secondary" className="text-lg px-8" onClick={() => setIsOrderModalOpen(true)}>
@@ -157,7 +157,47 @@ export default function Index() {
             </Button>
           </div>
         </div>
-        <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]"></div>
+        
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 border-2 border-white rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-1/3 w-16 h-16 border-2 border-white rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+          
+          <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.2"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            
+            <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="40%" y1="70%" x2="60%" y2="90%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
+            </line>
+            
+            <circle cx="30%" cy="40%" r="4" fill="white" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="90%" cy="60%" r="4" fill="white" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+            </circle>
+            <circle cx="60%" cy="90%" r="4" fill="white" opacity="0.6">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1s"/>
+            </circle>
+          </svg>
+          
+          <Icon name="Wifi" className="absolute top-1/4 left-1/5 w-12 h-12 opacity-20" />
+          <Icon name="Radio" className="absolute bottom-1/4 right-1/5 w-10 h-10 opacity-20" />
+          <Icon name="Tv" className="absolute top-1/3 right-1/4 w-10 h-10 opacity-20" />
+          <Icon name="Globe" className="absolute bottom-1/3 left-1/3 w-14 h-14 opacity-20" />
+        </div>
       </section>
 
       <section id="providers" className="py-16">
