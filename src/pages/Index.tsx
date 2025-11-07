@@ -86,6 +86,8 @@ export default function Index() {
   const [compareList, setCompareList] = useState<string[]>([]);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showUserAgreement, setShowUserAgreement] = useState(false);
+  const [showCookiesPolicy, setShowCookiesPolicy] = useState(false);
   const { toast } = useToast();
 
   const filteredTariffs = tariffs.filter(tariff => {
@@ -413,6 +415,83 @@ export default function Index() {
         </DialogContent>
       </Dialog>
 
+      <Dialog open={showUserAgreement} onOpenChange={setShowUserAgreement}>
+        <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Пользовательское соглашение</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 text-sm">
+            <p>Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения между владельцем сайта Телепорт (далее — Администрация) и пользователями сайта.</p>
+            
+            <h3 className="font-semibold text-base mt-4">1. Общие положения</h3>
+            <p>1.1. Используя сайт Телепорт, вы соглашаетесь с условиями настоящего Соглашения.</p>
+            <p>1.2. Если вы не согласны с условиями Соглашения, пожалуйста, прекратите использование сайта.</p>
+            <p>1.3. Администрация оставляет за собой право изменять Соглашение без предварительного уведомления.</p>
+            
+            <h3 className="font-semibold text-base mt-4">2. Предмет соглашения</h3>
+            <p>2.1. Администрация предоставляет пользователю доступ к информации о тарифах интернет-провайдеров.</p>
+            <p>2.2. Администрация выступает в качестве посредника между пользователем и провайдерами услуг.</p>
+            <p>2.3. Фактическое оказание услуг осуществляется непосредственно провайдерами (МТС, Билайн, МегаФон, Ростелеком).</p>
+            
+            <h3 className="font-semibold text-base mt-4">3. Права и обязанности пользователя</h3>
+            <p>3.1. Пользователь обязуется предоставлять достоверную информацию при заполнении форм.</p>
+            <p>3.2. Пользователь несет ответственность за сохранность своих персональных данных.</p>
+            <p>3.3. Пользователь обязуется не использовать сайт в противоправных целях.</p>
+            
+            <h3 className="font-semibold text-base mt-4">4. Ответственность сторон</h3>
+            <p>4.1. Администрация не несет ответственности за качество услуг, предоставляемых провайдерами.</p>
+            <p>4.2. Информация на сайте носит справочный характер и может быть изменена провайдерами.</p>
+            <p>4.3. Администрация не несет ответственности за технические сбои и временную недоступность сайта.</p>
+            
+            <h3 className="font-semibold text-base mt-4">5. Контактная информация</h3>
+            <p>По всем вопросам, связанным с настоящим Соглашением, обращайтесь по телефону: 8-995-150-88-33</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showCookiesPolicy} onOpenChange={setShowCookiesPolicy}>
+        <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Политика использования Cookie</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 text-sm">
+            <p>Настоящая Политика использования файлов Cookie объясняет, что такое файлы Cookie и как мы их используем на сайте Телепорт.</p>
+            
+            <h3 className="font-semibold text-base mt-4">1. Что такое Cookie</h3>
+            <p>Cookie — это небольшие текстовые файлы, которые сохраняются на вашем устройстве при посещении сайта. Они помогают сайту запоминать информацию о вашем визите.</p>
+            
+            <h3 className="font-semibold text-base mt-4">2. Какие Cookie мы используем</h3>
+            <p><strong>Необходимые Cookie:</strong> Обеспечивают базовую функциональность сайта (запоминание выбора языка, авторизация).</p>
+            <p><strong>Аналитические Cookie:</strong> Помогают понять, как пользователи взаимодействуют с сайтом, чтобы улучшить его работу.</p>
+            <p><strong>Функциональные Cookie:</strong> Запоминают ваши предпочтения и выбор (например, выбранный провайдер).</p>
+            
+            <h3 className="font-semibold text-base mt-4">3. Зачем нужны Cookie</h3>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Обеспечение корректной работы функций сайта</li>
+              <li>Запоминание выбранных настроек и фильтров</li>
+              <li>Анализ посещаемости для улучшения сервиса</li>
+              <li>Персонализация контента</li>
+            </ul>
+            
+            <h3 className="font-semibold text-base mt-4">4. Как управлять Cookie</h3>
+            <p>Вы можете настроить ваш браузер так, чтобы он блокировал все Cookie или уведомлял о их отправке. Однако это может привести к некорректной работе некоторых функций сайта.</p>
+            <p>Инструкции по управлению Cookie доступны в настройках вашего браузера:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Google Chrome: Настройки → Конфиденциальность и безопасность → Файлы cookie</li>
+              <li>Mozilla Firefox: Настройки → Приватность и защита → Куки и данные сайтов</li>
+              <li>Safari: Настройки → Конфиденциальность → Управление данными сайтов</li>
+              <li>Microsoft Edge: Настройки → Файлы cookie и разрешения сайтов</li>
+            </ul>
+            
+            <h3 className="font-semibold text-base mt-4">5. Обновления политики</h3>
+            <p>Мы можем обновлять данную Политику. Рекомендуем периодически проверять эту страницу на наличие изменений.</p>
+            
+            <h3 className="font-semibold text-base mt-4">6. Контакты</h3>
+            <p>Если у вас есть вопросы о нашей Политике Cookie, свяжитесь с нами по телефону: 8-995-150-88-33</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <footer className="border-t py-8 bg-card">
         <div className="container px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -449,16 +528,25 @@ export default function Index() {
           </div>
           <div className="mt-8 pt-8 border-t">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-              <p>© 2024 Телепорт. Все права защищены.</p>
+              <p>© 2025 Телепорт. Все права защищены.</p>
               <div className="flex gap-4">
-                <button onClick={() => setShowPrivacyPolicy(true)} className="hover:text-foreground transition-colors underline">
-                  Политика конфиденциальности
-                </button>
                 <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
               </div>
             </div>
             <div className="mt-4 text-xs text-muted-foreground text-center md:text-left">
-              <p>Продолжая использовать наш сайт, вы даете согласие на обработку файлов Cookies и других пользовательских данных, в соответствии с Политикой конфиденциальности и Пользовательским соглашением</p>
+              <p>Продолжая использовать наш сайт, вы даете согласие на обработку файлов{' '}
+                <button onClick={() => setShowCookiesPolicy(true)} className="underline hover:text-foreground transition-colors">
+                  Cookies
+                </button>
+                {' '}и других пользовательских данных, в соответствии с{' '}
+                <button onClick={() => setShowPrivacyPolicy(true)} className="underline hover:text-foreground transition-colors">
+                  Политикой конфиденциальности
+                </button>
+                {' '}и{' '}
+                <button onClick={() => setShowUserAgreement(true)} className="underline hover:text-foreground transition-colors">
+                  Пользовательским соглашением
+                </button>
+              </p>
             </div>
           </div>
         </div>
