@@ -252,8 +252,7 @@ export default function Index() {
               {[...providers, ...providers, ...providers].map((provider, index) => (
                 <div
                   key={`${provider.id}-${index}`}
-                  className="flex-shrink-0 mx-8 cursor-pointer transition-transform hover:scale-110"
-                  onClick={() => setSelectedProvider(selectedProvider === provider.id ? null : provider.id)}
+                  className="flex-shrink-0 mx-8 transition-transform hover:scale-110"
                 >
                   <div className="w-32 h-32 bg-white rounded-lg shadow-md flex items-center justify-center p-4 hover:shadow-xl transition-shadow">
                     <img src={provider.logo} alt={provider.name} className="w-full h-full object-contain" />
