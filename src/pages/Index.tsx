@@ -158,7 +158,7 @@ export default function Index() {
           </div>
         </div>
         
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full animate-pulse"></div>
           <div className="absolute top-20 right-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
           <div className="absolute bottom-20 left-1/4 w-20 h-20 border-2 border-white rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -169,34 +169,74 @@ export default function Index() {
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" opacity="0.2"/>
               </pattern>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="white" stopOpacity="0"/>
+                <stop offset="50%" stopColor="cyan" stopOpacity="1"/>
+                <stop offset="100%" stopColor="white" stopOpacity="0"/>
+              </linearGradient>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
             
-            <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
-              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
-            </line>
-            <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
-              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
-            </line>
-            <line x1="40%" y1="70%" x2="60%" y2="90%" stroke="white" strokeWidth="2" opacity="0.3" strokeDasharray="5,5">
-              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
+            <line x1="0%" y1="15%" x2="100%" y2="15%" stroke="url(#lineGradient)" strokeWidth="3">
+              <animate attributeName="x1" from="-100%" to="100%" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="x2" from="0%" to="200%" dur="3s" repeatCount="indefinite"/>
             </line>
             
-            <circle cx="30%" cy="40%" r="4" fill="white" opacity="0.6">
-              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+            <line x1="0%" y1="45%" x2="100%" y2="45%" stroke="url(#lineGradient)" strokeWidth="3">
+              <animate attributeName="x1" from="-100%" to="100%" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="x2" from="0%" to="200%" dur="2.5s" repeatCount="indefinite"/>
+            </line>
+            
+            <line x1="0%" y1="75%" x2="100%" y2="75%" stroke="url(#lineGradient)" strokeWidth="3">
+              <animate attributeName="x1" from="-100%" to="100%" dur="3.5s" repeatCount="indefinite"/>
+              <animate attributeName="x2" from="0%" to="200%" dur="3.5s" repeatCount="indefinite"/>
+            </line>
+            
+            <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="white" strokeWidth="2" opacity="0.4" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
+            </line>
+            <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="white" strokeWidth="2" opacity="0.4" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
+            </line>
+            <line x1="40%" y1="70%" x2="60%" y2="90%" stroke="white" strokeWidth="2" opacity="0.4" strokeDasharray="5,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.5s" repeatCount="indefinite"/>
+            </line>
+            
+            <circle cx="30%" cy="40%" r="5" fill="cyan" opacity="0.8">
+              <animate attributeName="r" values="3;7;3" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="90%" cy="60%" r="4" fill="white" opacity="0.6">
-              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+            <circle cx="90%" cy="60%" r="5" fill="cyan" opacity="0.8">
+              <animate attributeName="r" values="3;7;3" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
             </circle>
-            <circle cx="60%" cy="90%" r="4" fill="white" opacity="0.6">
-              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1s"/>
+            <circle cx="60%" cy="90%" r="5" fill="cyan" opacity="0.8">
+              <animate attributeName="r" values="3;7;3" dur="2s" repeatCount="indefinite" begin="1s"/>
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" begin="1s"/>
             </circle>
           </svg>
           
-          <Icon name="Wifi" className="absolute top-1/4 left-1/5 w-12 h-12 opacity-20" />
-          <Icon name="Radio" className="absolute bottom-1/4 right-1/5 w-10 h-10 opacity-20" />
-          <Icon name="Tv" className="absolute top-1/3 right-1/4 w-10 h-10 opacity-20" />
-          <Icon name="Globe" className="absolute bottom-1/3 left-1/3 w-14 h-14 opacity-20" />
+          <div className="absolute top-1/4 left-1/5 animate-bounce" style={{animationDuration: '3s'}}>
+            <Icon name="Wifi" className="w-12 h-12 opacity-30" />
+          </div>
+          <div className="absolute bottom-1/4 right-1/5 animate-bounce" style={{animationDuration: '3.5s', animationDelay: '0.5s'}}>
+            <Icon name="Radio" className="w-10 h-10 opacity-30" />
+          </div>
+          <div className="absolute top-1/3 right-1/4 animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}>
+            <Icon name="Tv" className="w-10 h-10 opacity-30" />
+          </div>
+          <div className="absolute bottom-1/3 left-1/3 animate-bounce" style={{animationDuration: '3.2s', animationDelay: '0.7s'}}>
+            <Icon name="Globe" className="w-14 h-14 opacity-30" />
+          </div>
+          <div className="absolute top-1/2 left-1/6 animate-bounce" style={{animationDuration: '3.8s', animationDelay: '1.5s'}}>
+            <Icon name="Monitor" className="w-10 h-10 opacity-30" />
+          </div>
+          <div className="absolute bottom-1/5 right-1/6 animate-bounce" style={{animationDuration: '3.3s', animationDelay: '2s'}}>
+            <Icon name="Smartphone" className="w-8 h-8 opacity-30" />
+          </div>
+          <div className="absolute top-1/5 right-1/3 animate-bounce" style={{animationDuration: '4.2s'}}>
+            <Icon name="Signal" className="w-10 h-10 opacity-30" />
+          </div>
         </div>
       </section>
 
@@ -221,6 +261,170 @@ export default function Index() {
                 </CardHeader>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted/30">
+        <div className="container px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="animate-scale-in">
+              <div className="text-5xl font-bold text-primary mb-2">15 000+</div>
+              <p className="text-lg text-muted-foreground">Довольных клиентов</p>
+            </div>
+            <div className="animate-scale-in" style={{animationDelay: '0.2s'}}>
+              <div className="text-5xl font-bold text-primary mb-2">4.9/5</div>
+              <p className="text-lg text-muted-foreground">Средняя оценка</p>
+            </div>
+            <div className="animate-scale-in" style={{animationDelay: '0.4s'}}>
+              <div className="text-5xl font-bold text-primary mb-2">24/7</div>
+              <p className="text-lg text-muted-foreground">Поддержка клиентов</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Отзывы наших клиентов</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-xl">
+                    А
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Алексей М.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Отличный сервис! Помогли подобрать идеальный тариф для моей семьи. Интернет работает стабильно, скорость соответствует заявленной. Подключили за 2 дня. Рекомендую!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.1s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-megafon to-primary flex items-center justify-center text-white font-bold text-xl">
+                    М
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Мария К.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Очень довольна! Менеджеры вежливые, всё объяснили по полочкам. Цены действительно выгодные, особенно в первые месяцы. ТВ каналы отличные, есть всё что нужно.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.2s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-rostelecom flex items-center justify-center text-white font-bold text-xl">
+                    Д
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Дмитрий В.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Быстрое подключение, отличная скорость интернета для работы из дома. Никаких скрытых платежей, всё прозрачно. Спасибо за качественный сервис!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.3s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-beeline to-mts flex items-center justify-center text-white font-bold text-xl">
+                    Е
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Елена С.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Сравнивала тарифы на разных сайтах, здесь самое удобное сравнение. Консультант помог выбрать оптимальный вариант. Подключили быстро, всё работает отлично!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.4s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-megafon flex items-center justify-center text-white font-bold text-xl">
+                    И
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Игорь П.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Профессиональный подход! Проверили адрес, предложили несколько вариантов. Выбрал тариф с максимальной скоростью - ни разу не пожалел. Стримы идут без лагов.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.5s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-beeline flex items-center justify-center text-white font-bold text-xl">
+                    О
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Ольга Т.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Переехала в новую квартиру, нужен был интернет срочно. Обратилась сюда - подключили через 3 дня! Цена супер, качество связи на высоте. Всем советую!
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
