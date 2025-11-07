@@ -6,111 +6,87 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Tariff {
   id: string;
   provider: "beeline" | "mts" | "megafon" | "rostelecom";
   name: string;
   speed: string;
-  price: number;
+  price: string;
   type: "internet" | "tv" | "bundle";
   channels?: number;
   features: string[];
+  isHit: boolean;
 }
 
 const tariffs: Tariff[] = [
   {
     id: "1",
-    provider: "beeline",
-    name: "Домашний Интернет 100",
-    speed: "100 Мбит/с",
-    price: 450,
-    type: "internet",
-    features: ["Безлимитный трафик", "Wi-Fi роутер в аренду", "Без привязки к ТВ"]
+    provider: "mts",
+    name: "МТС дома Хорошо",
+    speed: "от 500 Мбит/с",
+    price: "375₽ первые 2 месяца, далее 750₽",
+    type: "bundle",
+    features: ["Домашний интернет от 500 Мбит/с", "Онлайн-кинотеатр КИОН", "Безлимитный трафик"],
+    isHit: true
   },
   {
     id: "2",
     provider: "beeline",
-    name: "Интернет + ТВ",
-    speed: "200 Мбит/с",
-    price: 850,
+    name: "Для дома с ТВ",
+    speed: "500 Мбит/с",
+    price: "375₽ первые 3 месяца, далее 750₽",
     type: "bundle",
-    channels: 150,
-    features: ["200+ ТВ каналов", "HD качество", "Онлайн-кинотеатр"]
+    channels: 237,
+    features: ["Домашний интернет 500 Мбит/с", "237 телеканалов", "HD качество"],
+    isHit: true
   },
   {
     id: "3",
-    provider: "mts",
-    name: "MTS 150",
-    speed: "150 Мбит/с",
-    price: 500,
-    type: "internet",
-    features: ["Стабильная скорость", "Техподдержка 24/7", "Бесплатная установка"]
+    provider: "megafon",
+    name: "Для дома все",
+    speed: "300 Мбит/с",
+    price: "325₽ первые 2 месяца, далее 650₽",
+    type: "bundle",
+    channels: 180,
+    features: ["Домашний интернет 300 Мбит/с", "180 телеканалов", "Стабильное подключение"],
+    isHit: true
   },
   {
     id: "4",
-    provider: "mts",
-    name: "MTS Premium",
-    speed: "300 Мбит/с",
-    price: 990,
-    type: "bundle",
-    channels: 200,
-    features: ["300+ каналов", "4K контент", "Мобильное ТВ"]
-  },
-  {
-    id: "5",
-    provider: "megafon",
-    name: "Интернет 200",
-    speed: "200 Мбит/с",
-    price: 550,
-    type: "internet",
-    features: ["Без скрытых платежей", "Статический IP", "Антивирус в подарок"]
-  },
-  {
-    id: "6",
-    provider: "megafon",
-    name: "МегаКомбо",
+    provider: "rostelecom",
+    name: "Технология развлечения",
     speed: "500 Мбит/с",
-    price: 1200,
+    price: "750₽/мес",
     type: "bundle",
-    channels: 250,
-    features: ["Максимальная скорость", "300+ каналов", "Запись эфира"]
-  },
-  {
-    id: "7",
-    provider: "rostelecom",
-    name: "Базовый 100",
-    speed: "100 Мбит/с",
-    price: 400,
-    type: "internet",
-    features: ["Стабильное подключение", "Оптоволокно", "Без ограничений"]
-  },
-  {
-    id: "8",
-    provider: "rostelecom",
-    name: "Интерактивное ТВ",
-    speed: "300 Мбит/с",
-    price: 1100,
-    type: "bundle",
-    channels: 280,
-    features: ["Интерактивное ТВ", "Управление эфиром", "Мультирум"]
+    channels: 224,
+    features: ["Домашний интернет 500 Мбит/с", "224 телеканала", "Интерактивное ТВ"],
+    isHit: true
   }
 ];
 
 const providers = [
-  { id: "beeline", name: "Билайн", color: "beeline", icon: "Wifi" },
-  { id: "mts", name: "МТС", color: "mts", icon: "Radio" },
-  { id: "megafon", name: "МегаФон", color: "megafon", icon: "Signal" },
-  { id: "rostelecom", name: "Ростелеком", color: "rostelecom", icon: "Globe" }
+  { id: "beeline", name: "Билайн", color: "beeline", logo: "https://cdn.poehali.dev/files/c9833d87-bd76-4c9b-8a83-97636b74d1ba.png" },
+  { id: "mts", name: "МТС", color: "mts", logo: "https://cdn.poehali.dev/files/e821153f-fa74-4e37-a2f1-5da4d4799bac.jpg" },
+  { id: "megafon", name: "МегаФон", color: "megafon", logo: "https://cdn.poehali.dev/files/9fc53ae4-9096-4872-a8d4-153798cbcdfd.png" },
+  { id: "rostelecom", name: "Ростелеком", color: "rostelecom", logo: "https://cdn.poehali.dev/files/0d805a1f-6104-41ba-b069-7938b6248476.jpg" }
 ];
 
 export default function Index() {
   const [selectedProvider, setSelectedProvider] = useState<string | null>(null);
   const [serviceType, setServiceType] = useState<"all" | "internet" | "tv" | "bundle">("all");
   const [compareList, setCompareList] = useState<string[]>([]);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const { toast } = useToast();
 
   const filteredTariffs = tariffs.filter(tariff => {
@@ -139,6 +115,7 @@ export default function Index() {
       title: "Заявка отправлена!",
       description: "Мы свяжемся с вами в ближайшее время"
     });
+    setIsOrderModalOpen(false);
   };
 
   return (
@@ -154,23 +131,28 @@ export default function Index() {
               <p className="text-xs text-muted-foreground">Будь здесь и там одновременно</p>
             </div>
           </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
-            <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
-            <a href="#compare" className="text-sm font-medium hover:text-accent transition-colors">Сравнение</a>
-            <a href="#order" className="text-sm font-medium hover:text-accent transition-colors">Заказать</a>
-          </nav>
+          <div className="flex items-center gap-4">
+            <a href="tel:89951508833" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+              <Icon name="Phone" className="h-4 w-4" />
+              8-995-150-88-33
+            </a>
+            <nav className="hidden md:flex gap-6">
+              <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
+              <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
+              <button onClick={() => setShowPrivacyPolicy(true)} className="text-sm font-medium hover:text-accent transition-colors">Политика конфиденциальности</button>
+            </nav>
+          </div>
         </div>
       </header>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-accent to-rostelecom py-20 text-white">
         <div className="container relative z-10 px-4">
           <div className="mx-auto max-w-3xl text-center animate-fade-in">
-            <h2 className="text-5xl font-bold mb-4">Будь здесь и там одновременно</h2>
+            <h2 className="text-5xl font-bold mb-4">Ваш проводник в мир быстрого интернета и качественного телевидения</h2>
             <p className="text-xl mb-8 text-white/90">
               Сравните тарифы от ведущих провайдеров и найдите идеальное подключение
             </p>
-            <Button size="lg" variant="secondary" className="text-lg px-8">
+            <Button size="lg" variant="secondary" className="text-lg px-8" onClick={() => setIsOrderModalOpen(true)}>
               Подобрать тариф <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -191,8 +173,8 @@ export default function Index() {
                 onClick={() => setSelectedProvider(selectedProvider === provider.id ? null : provider.id)}
               >
                 <CardHeader className="text-center">
-                  <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-${provider.color}/10`}>
-                    <Icon name={provider.icon as any} className={`h-8 w-8 text-${provider.color}`} />
+                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center">
+                    <img src={provider.logo} alt={provider.name} className="w-full h-full object-contain" />
                   </div>
                   <CardTitle>{provider.name}</CardTitle>
                   <CardDescription>Надежный провайдер</CardDescription>
@@ -216,22 +198,25 @@ export default function Index() {
             </TabsList>
           </Tabs>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredTariffs.map((tariff) => (
               <Card key={tariff.id} className="relative animate-scale-in hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
-                    <Badge variant="outline" className={`bg-${tariff.provider}/10 text-${tariff.provider} border-${tariff.provider}/20`}>
-                      {providers.find(p => p.id === tariff.provider)?.name}
-                    </Badge>
+                    <div className="flex flex-col gap-2">
+                      <img src={providers.find(p => p.id === tariff.provider)?.logo} alt="" className="w-16 h-16 object-contain" />
+                      {tariff.isHit && (
+                        <Badge className="bg-red-500 text-white w-fit">ХИТ ПРОДАЖ</Badge>
+                      )}
+                    </div>
                     <Checkbox
                       checked={compareList.includes(tariff.id)}
                       onCheckedChange={() => toggleCompare(tariff.id)}
                     />
                   </div>
                   <CardTitle className="text-xl">{tariff.name}</CardTitle>
-                  <CardDescription className="text-2xl font-bold text-foreground mt-2">
-                    {tariff.price} ₽/мес
+                  <CardDescription className="text-lg font-bold text-foreground mt-2">
+                    {tariff.price}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -255,7 +240,7 @@ export default function Index() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full">Подключить</Button>
+                  <Button className="w-full" onClick={() => setIsOrderModalOpen(true)}>Подключить</Button>
                 </CardContent>
               </Card>
             ))}
@@ -280,12 +265,10 @@ export default function Index() {
                   return (
                     <Card key={id}>
                       <CardHeader>
-                        <Badge className={`mb-2 bg-${tariff.provider}`}>
-                          {providers.find(p => p.id === tariff.provider)?.name}
-                        </Badge>
+                        <img src={providers.find(p => p.id === tariff.provider)?.logo} alt="" className="w-16 h-16 object-contain mb-2" />
                         <CardTitle>{tariff.name}</CardTitle>
-                        <CardDescription className="text-2xl font-bold text-foreground">
-                          {tariff.price} ₽/мес
+                        <CardDescription className="text-lg font-bold text-foreground">
+                          {tariff.price}
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-3">
@@ -320,38 +303,80 @@ export default function Index() {
         </section>
       )}
 
-      <section id="order" className="py-16 bg-muted/50">
-        <div className="container px-4">
-          <div className="mx-auto max-w-xl">
-            <h2 className="text-3xl font-bold text-center mb-8">Оставить заявку</h2>
-            <Card>
-              <CardContent className="pt-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">ФИО</Label>
-                    <Input id="name" required placeholder="Иванов Иван Иванович" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Телефон</Label>
-                    <Input id="phone" type="tel" required placeholder="+7 (999) 123-45-67" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="address">Адрес подключения</Label>
-                    <Input id="address" required placeholder="г. Москва, ул. Ленина, д. 1, кв. 1" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="comment">Комментарий</Label>
-                    <Textarea id="comment" placeholder="Укажите предпочитаемого провайдера или тариф" />
-                  </div>
-                  <Button type="submit" className="w-full" size="lg">
-                    Отправить заявку
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+      <Dialog open={isOrderModalOpen} onOpenChange={setIsOrderModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Оставить заявку</DialogTitle>
+            <DialogDescription>
+              Заполните форму или позвоните нам напрямую
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <a href="tel:89951508833" className="w-full">
+              <Button className="w-full" size="lg" variant="outline">
+                <Icon name="Phone" className="mr-2 h-5 w-5" />
+                Позвонить 8-995-150-88-33
+              </Button>
+            </a>
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">Или</span>
+              </div>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="modal-name">Имя</Label>
+                <Input id="modal-name" required placeholder="Иван Иванов" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="modal-phone">Телефон</Label>
+                <Input id="modal-phone" type="tel" required placeholder="+7 (999) 123-45-67" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="modal-address">Адрес подключения</Label>
+                <Input id="modal-address" required placeholder="г. Москва, ул. Ленина, д. 1, кв. 1" />
+              </div>
+              <Button type="submit" className="w-full" size="lg">
+                Отправить заявку
+              </Button>
+            </form>
           </div>
-        </div>
-      </section>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showPrivacyPolicy} onOpenChange={setShowPrivacyPolicy}>
+        <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Политика конфиденциальности</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 text-sm">
+            <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты информации о физических лицах (далее — Пользователи), использующих сервисы сайта Телепорт.</p>
+            
+            <h3 className="font-semibold text-base mt-4">1. Собираемая информация</h3>
+            <p>Мы собираем информацию, которую вы предоставляете при заполнении форм на сайте: имя, номер телефона, адрес подключения.</p>
+            
+            <h3 className="font-semibold text-base mt-4">2. Использование информации</h3>
+            <p>Предоставленная вами информация используется для:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Обработки ваших заявок на подключение услуг</li>
+              <li>Связи с вами по вопросам оказания услуг</li>
+              <li>Улучшения качества обслуживания</li>
+            </ul>
+            
+            <h3 className="font-semibold text-base mt-4">3. Защита информации</h3>
+            <p>Мы применяем необходимые организационные и технические меры для защиты персональной информации от несанкционированного доступа, изменения, раскрытия или уничтожения.</p>
+            
+            <h3 className="font-semibold text-base mt-4">4. Передача третьим лицам</h3>
+            <p>Ваши данные могут быть переданы провайдерам услуг (МТС, Билайн, МегаФон, Ростелеком) исключительно для обработки вашей заявки на подключение.</p>
+            
+            <h3 className="font-semibold text-base mt-4">5. Контакты</h3>
+            <p>По вопросам, связанным с обработкой персональных данных, обращайтесь по телефону: 8-995-150-88-33</p>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <footer className="border-t py-8 bg-card">
         <div className="container px-4">
@@ -365,28 +390,25 @@ export default function Index() {
             <div>
               <h3 className="font-semibold mb-3">Контакты</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p className="flex items-center gap-2">
+                <a href="tel:89951508833" className="flex items-center gap-2 hover:text-foreground transition-colors">
                   <Icon name="Phone" className="h-4 w-4" />
-                  8 (800) 555-35-35
-                </p>
-                <p className="flex items-center gap-2">
-                  <Icon name="Mail" className="h-4 w-4" />
-                  info@teleport.ru
-                </p>
+                  8-995-150-88-33
+                </a>
               </div>
             </div>
             <div>
               <h3 className="font-semibold mb-3">Социальные сети</h3>
               <div className="flex gap-3">
-                <Button size="icon" variant="outline">
-                  <Icon name="Send" className="h-4 w-4" />
-                </Button>
-                <Button size="icon" variant="outline">
-                  <Icon name="MessageCircle" className="h-4 w-4" />
-                </Button>
-                <Button size="icon" variant="outline">
-                  <Icon name="Share2" className="h-4 w-4" />
-                </Button>
+                <a href="https://t.me/89951508833" target="_blank" rel="noopener noreferrer">
+                  <Button size="icon" variant="outline">
+                    <Icon name="Send" className="h-4 w-4" />
+                  </Button>
+                </a>
+                <a href="https://wa.me/89951508833" target="_blank" rel="noopener noreferrer">
+                  <Button size="icon" variant="outline">
+                    <Icon name="MessageCircle" className="h-4 w-4" />
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
