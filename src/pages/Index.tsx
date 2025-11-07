@@ -240,45 +240,23 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="providers" className="py-16">
+      <section id="providers" className="py-16 bg-muted/30">
         <div className="container px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Наши провайдеры</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {providers.map((provider) => (
-              <Card
-                key={provider.id}
-                className={`cursor-pointer transition-all hover:scale-105 hover:shadow-lg ${
-                  selectedProvider === provider.id ? "ring-2 ring-" + provider.color : ""
-                }`}
-                onClick={() => setSelectedProvider(selectedProvider === provider.id ? null : provider.id)}
-              >
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center">
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll">
+              {[...providers, ...providers, ...providers].map((provider, index) => (
+                <div
+                  key={`${provider.id}-${index}`}
+                  className="flex-shrink-0 mx-8 cursor-pointer transition-transform hover:scale-110"
+                  onClick={() => setSelectedProvider(selectedProvider === provider.id ? null : provider.id)}
+                >
+                  <div className="w-32 h-32 bg-white rounded-lg shadow-md flex items-center justify-center p-4 hover:shadow-xl transition-shadow">
                     <img src={provider.logo} alt={provider.name} className="w-full h-full object-contain" />
                   </div>
-                  <CardTitle>{provider.name}</CardTitle>
-                  <CardDescription>Надежный провайдер</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-muted/30">
-        <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="animate-scale-in">
-              <div className="text-5xl font-bold text-primary mb-2">15 000+</div>
-              <p className="text-lg text-muted-foreground">Довольных клиентов</p>
-            </div>
-            <div className="animate-scale-in" style={{animationDelay: '0.2s'}}>
-              <div className="text-5xl font-bold text-primary mb-2">4.9/5</div>
-              <p className="text-lg text-muted-foreground">Средняя оценка</p>
-            </div>
-            <div className="animate-scale-in" style={{animationDelay: '0.4s'}}>
-              <div className="text-5xl font-bold text-primary mb-2">24/7</div>
-              <p className="text-lg text-muted-foreground">Поддержка клиентов</p>
+                  <p className="text-center mt-3 font-semibold text-sm">{provider.name}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -738,7 +716,21 @@ export default function Index() {
 
       <footer className="border-t py-8 bg-card">
         <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+            <div className="animate-scale-in">
+              <div className="text-4xl font-bold text-primary mb-2">15 000+</div>
+              <p className="text-sm text-muted-foreground">Довольных клиентов</p>
+            </div>
+            <div className="animate-scale-in" style={{animationDelay: '0.2s'}}>
+              <div className="text-4xl font-bold text-primary mb-2">4.9/5</div>
+              <p className="text-sm text-muted-foreground">Средняя оценка</p>
+            </div>
+            <div className="animate-scale-in" style={{animationDelay: '0.4s'}}>
+              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+              <p className="text-sm text-muted-foreground">Поддержка клиентов</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t pt-8">
             <div>
               <h3 className="font-semibold mb-3">Телепорт</h3>
               <p className="text-sm text-muted-foreground">
