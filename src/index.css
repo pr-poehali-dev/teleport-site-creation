@@ -133,3 +133,35 @@
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+@keyframes rocketFlight {
+  0% {
+    left: -5%;
+    top: 80%;
+    transform: rotate(-45deg);
+  }
+  25% {
+    left: 30%;
+    top: 20%;
+    transform: rotate(-30deg);
+  }
+  50% {
+    left: 60%;
+    top: 60%;
+    transform: rotate(-60deg);
+  }
+  75% {
+    left: 85%;
+    top: 15%;
+    transform: rotate(-20deg);
+  }
+  100% {
+    left: 105%;
+    top: -5%;
+    transform: rotate(-45deg);
+  }
+}
+
+.animate-rocket {
+  animation: rocketFlight 15s ease-in-out infinite;
+}

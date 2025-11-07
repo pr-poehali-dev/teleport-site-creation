@@ -238,6 +238,10 @@ export default function Index() {
             <Icon name="Signal" className="w-10 h-10 opacity-30" />
           </div>
         </div>
+        
+        <div className="absolute animate-rocket opacity-30">
+          <Icon name="Rocket" className="w-16 h-16 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+        </div>
       </section>
 
       <section id="providers" className="py-16 bg-muted/30">
@@ -262,150 +266,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Отзывы наших клиентов</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-xl">
-                    А
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Алексей М.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Отличный сервис! Помогли подобрать идеальный тариф для моей семьи. Интернет работает стабильно, скорость соответствует заявленной. Подключили за 2 дня. Рекомендую!
-                </p>
-              </CardContent>
-            </Card>
 
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.1s'}}>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-megafon to-primary flex items-center justify-center text-white font-bold text-xl">
-                    М
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Мария К.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Очень довольна! Менеджеры вежливые, всё объяснили по полочкам. Цены действительно выгодные, особенно в первые месяцы. ТВ каналы отличные, есть всё что нужно.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.2s'}}>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-rostelecom flex items-center justify-center text-white font-bold text-xl">
-                    Д
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Дмитрий В.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Быстрое подключение, отличная скорость интернета для работы из дома. Никаких скрытых платежей, всё прозрачно. Спасибо за качественный сервис!
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.3s'}}>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-beeline to-mts flex items-center justify-center text-white font-bold text-xl">
-                    Е
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Елена С.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Сравнивала тарифы на разных сайтах, здесь самое удобное сравнение. Консультант помог выбрать оптимальный вариант. Подключили быстро, всё работает отлично!
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.4s'}}>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-megafon flex items-center justify-center text-white font-bold text-xl">
-                    И
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Игорь П.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Профессиональный подход! Проверили адрес, предложили несколько вариантов. Выбрал тариф с максимальной скоростью - ни разу не пожалел. Стримы идут без лагов.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.5s'}}>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-beeline flex items-center justify-center text-white font-bold text-xl">
-                    О
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Ольга Т.</CardTitle>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Переехала в новую квартиру, нужен был интернет срочно. Обратилась сюда - подключили через 3 дня! Цена супер, качество связи на высоте. Всем советую!
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       <section id="tariffs" className="py-16 bg-muted/50">
         <div className="container px-4">
@@ -716,7 +577,148 @@ export default function Index() {
 
       <footer className="border-t py-8 bg-card">
         <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12">Отзывы наших клиентов</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-xl">
+                    А
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Алексей М.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Отличный сервис! Помогли подобрать идеальный тариф для моей семьи. Интернет работает стабильно, скорость соответствует заявленной. Подключили за 2 дня. Рекомендую!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.1s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-megafon to-primary flex items-center justify-center text-white font-bold text-xl">
+                    М
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Мария К.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Очень довольна! Менеджеры вежливые, всё объяснили по полочкам. Цены действительно выгодные, особенно в первые месяцы. ТВ каналы отличные, есть всё что нужно.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.2s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-rostelecom flex items-center justify-center text-white font-bold text-xl">
+                    Д
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Дмитрий В.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Быстрое подключение, отличная скорость интернета для работы из дома. Никаких скрытых платежей, всё прозрачно. Спасибо за качественный сервис!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.3s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-beeline to-mts flex items-center justify-center text-white font-bold text-xl">
+                    Е
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Елена С.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Сравнивала тарифы на разных сайтах, здесь самое удобное сравнение. Консультант помог выбрать оптимальный вариант. Подключили быстро, всё работает отлично!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.4s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-megafon flex items-center justify-center text-white font-bold text-xl">
+                    И
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Игорь П.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Профессиональный подход! Проверили адрес, предложили несколько вариантов. Выбрал тариф с максимальной скоростью - ни разу не пожалел. Стримы идут без лагов.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-scale-in hover:shadow-lg transition-shadow" style={{animationDelay: '0.5s'}}>
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-beeline flex items-center justify-center text-white font-bold text-xl">
+                    О
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Ольга Т.</CardTitle>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Переехала в новую квартиру, нужен был интернет срочно. Обратилась сюда - подключили через 3 дня! Цена супер, качество связи на высоте. Всем советую!
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12 border-t pt-12">
             <div className="animate-scale-in">
               <div className="text-4xl font-bold text-primary mb-2">15 000+</div>
               <p className="text-sm text-muted-foreground">Довольных клиентов</p>
