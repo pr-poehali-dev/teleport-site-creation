@@ -146,9 +146,10 @@ export default function Index() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-accent to-rostelecom py-20 text-white">
         <div className="container relative z-10 px-4">
           <div className="mx-auto max-w-3xl text-center animate-fade-in">
-            <h2 className="text-5xl font-bold mb-4">Сравните тарифы и выберите лучший</h2>
-            <p className="text-lg mb-8 text-white/80 font-light italic">Ваш проводник в мир быстрого интернета и качественного телевидения</p>
-
+            <h2 className="text-5xl font-bold mb-4">Ваш проводник в мир быстрого интернета и качественного телевидения</h2>
+            <p className="text-xl mb-8 text-white/90">
+              Сравните тарифы от ведущих провайдеров и найдите идеальное подключение
+            </p>
             <Button size="lg" variant="secondary" className="text-lg px-8" onClick={() => setIsOrderModalOpen(true)}>
               Подобрать тариф <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
             </Button>
