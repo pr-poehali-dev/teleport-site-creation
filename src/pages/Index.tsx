@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -83,7 +83,6 @@ const providers = [
 
 export default function Index() {
   const [selectedProvider, setSelectedProvider] = useState<string | null>(null);
-  const [serviceType, setServiceType] = useState<"all" | "internet" | "tv" | "bundle">("all");
   const [compareList, setCompareList] = useState<string[]>([]);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
@@ -91,8 +90,7 @@ export default function Index() {
 
   const filteredTariffs = tariffs.filter(tariff => {
     const matchesProvider = !selectedProvider || tariff.provider === selectedProvider;
-    const matchesType = serviceType === "all" || tariff.type === serviceType;
-    return matchesProvider && matchesType;
+    return matchesProvider;
   });
 
   const toggleCompare = (id: string) => {
@@ -139,7 +137,7 @@ export default function Index() {
             <nav className="hidden md:flex gap-6">
               <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
               <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
-              <button onClick={() => setShowPrivacyPolicy(true)} className="text-sm font-medium hover:text-accent transition-colors">Политика конфиденциальности</button>
+              <a href="#faq" className="text-sm font-medium hover:text-accent transition-colors">FAQ</a>
             </nav>
           </div>
         </div>
@@ -148,10 +146,9 @@ export default function Index() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-accent to-rostelecom py-20 text-white">
         <div className="container relative z-10 px-4">
           <div className="mx-auto max-w-3xl text-center animate-fade-in">
-            <h2 className="text-5xl font-bold mb-4">Ваш проводник в мир быстрого интернета и качественного телевидения</h2>
-            <p className="text-xl mb-8 text-white/90">
-              Сравните тарифы от ведущих провайдеров и найдите идеальное подключение
-            </p>
+            <h2 className="text-5xl font-bold mb-4">Сравните тарифы и выберите лучший</h2>
+            <p className="text-lg mb-8 text-white/80 font-light italic">Ваш проводник в мир быстрого интернета и качественного телевидения</p>
+
             <Button size="lg" variant="secondary" className="text-lg px-8" onClick={() => setIsOrderModalOpen(true)}>
               Подобрать тариф <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
             </Button>
@@ -187,16 +184,7 @@ export default function Index() {
 
       <section id="tariffs" className="py-16 bg-muted/50">
         <div className="container px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Тарифы</h2>
-          
-          <Tabs value={serviceType} onValueChange={(value) => setServiceType(value as any)} className="mb-8">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-4">
-              <TabsTrigger value="all">Все</TabsTrigger>
-              <TabsTrigger value="internet">Интернет</TabsTrigger>
-              <TabsTrigger value="tv">ТВ</TabsTrigger>
-              <TabsTrigger value="bundle">Комбо</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <h2 className="text-3xl font-bold text-center mb-12">Тарифы</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredTariffs.map((tariff) => (
@@ -347,6 +335,52 @@ export default function Index() {
         </DialogContent>
       </Dialog>
 
+      <section id="faq" className="py-16">
+        <div className="container px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Часто задаваемые вопросы</h2>
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Как быстро можно подключить интернет?</AccordionTrigger>
+                <AccordionContent>
+                  После оформления заявки наши специалисты свяжутся с вами в течение 1 часа. Подключение производится в течение 1-3 рабочих дней в зависимости от выбранного провайдера и технической возможности.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>Нужно ли платить за установку оборудования?</AccordionTrigger>
+                <AccordionContent>
+                  Большинство провайдеров предоставляют бесплатную установку при подключении тарифа на 12 месяцев. Роутер предоставляется в аренду бесплатно или за символическую плату.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Можно ли сменить тариф после подключения?</AccordionTrigger>
+                <AccordionContent>
+                  Да, вы можете изменить тариф в любой момент. Обратитесь к своему провайдеру через личный кабинет или по телефону горячей линии. Смена тарифа обычно происходит со следующего расчетного периода.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger>Что делать, если по моему адресу нет подключения?</AccordionTrigger>
+                <AccordionContent>
+                  Оставьте заявку, и мы проверим техническую возможность подключения по вашему адресу у всех доступных провайдеров. Если подключение невозможно, мы предложим альтернативные решения.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5">
+                <AccordionTrigger>Как работают акционные цены на тарифы?</AccordionTrigger>
+                <AccordionContent>
+                  Акционная цена действует указанный период (2-3 месяца), затем тариф переходит на стандартную стоимость. Вы можете отказаться от услуги до окончания акционного периода без штрафов.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-6">
+                <AccordionTrigger>Есть ли скрытые платежи?</AccordionTrigger>
+                <AccordionContent>
+                  Нет, все указанные цены финальные. Дополнительные услуги (статический IP, дополнительное оборудование) оплачиваются отдельно только по вашему желанию.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
       <Dialog open={showPrivacyPolicy} onOpenChange={setShowPrivacyPolicy}>
         <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
@@ -412,8 +446,20 @@ export default function Index() {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © 2024 Телепорт. Все права защищены.
+          <div className="mt-8 pt-8 border-t">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+              <p>© 2024 Телепорт. Все права защищены.</p>
+              <div className="flex gap-4">
+                <button onClick={() => setShowPrivacyPolicy(true)} className="hover:text-foreground transition-colors underline">
+                  Политика конфиденциальности
+                </button>
+                <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
+              </div>
+            </div>
+            <div className="mt-4 text-xs text-muted-foreground text-center md:text-left">
+              <p>ИП Иванов И.И. | ИНН: 123456789012 | ОГРНИП: 123456789012345</p>
+              <p className="mt-1">Телепорт является официальным партнером МТС, Билайн, МегаФон и Ростелеком</p>
+            </div>
           </div>
         </div>
       </footer>
