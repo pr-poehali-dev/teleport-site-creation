@@ -141,9 +141,6 @@ export default function Index() {
               <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
               <a href="#faq" className="text-sm font-medium hover:text-accent transition-colors">FAQ</a>
             </nav>
-            <Button size="sm" onClick={() => setIsOrderModalOpen(true)}>
-              Заказать звонок
-            </Button>
           </div>
         </div>
       </header>
@@ -249,7 +246,12 @@ export default function Index() {
 
       <section id="providers" className="py-16 bg-muted/30">
         <div className="container px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Наши провайдеры</h2>
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-4">
+            <h2 className="text-3xl font-bold">Наши провайдеры</h2>
+            <Button size="lg" onClick={() => setIsOrderModalOpen(true)}>
+              Заказать звонок <Icon name="Phone" className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
           <div className="relative overflow-hidden">
             <div className="flex animate-scroll">
               {[...providers, ...providers, ...providers].map((provider, index) => (
@@ -794,6 +796,10 @@ export default function Index() {
           </div>
         </div>
       </footer>
+
+      <a href="tel:84993947238" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary hover:bg-primary/90 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 animate-pulse">
+        <Icon name="Phone" className="h-6 w-6 text-white" />
+      </a>
     </div>
   );
 }
