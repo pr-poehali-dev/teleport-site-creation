@@ -132,21 +132,10 @@ export default function Index() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2">
-              <a href="tel:84993947238" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
-                <Icon name="Phone" className="h-4 w-4" />
-                8-499-394-72-38
-              </a>
-              <div className="flex items-center gap-2">
-                <a href="https://wa.me/79296981621" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs sm:text-sm font-semibold hover:text-accent transition-colors">
-                  <Icon name="MessageCircle" className="h-4 w-4" />
-                  +7 929 698 16 21
-                </a>
-                <a href="https://t.me/+79296981621" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                  <Icon name="Send" className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
+            <a href="tel:84993947238" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+              <Icon name="Phone" className="h-4 w-4" />
+              8-499-394-72-38
+            </a>
             <nav className="hidden md:flex gap-6">
               <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
               <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
@@ -752,25 +741,28 @@ export default function Index() {
             <div>
               <h3 className="font-semibold mb-3">Контакты</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <a href="tel:89951508833" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                <a href="tel:84993947238" className="flex items-center gap-2 hover:text-foreground transition-colors">
                   <Icon name="Phone" className="h-4 w-4" />
-                  8-995-150-88-33
+                  8-499-394-72-38
                 </a>
               </div>
             </div>
             <div>
               <h3 className="font-semibold mb-3">Социальные сети</h3>
-              <div className="flex gap-3">
-                <a href="https://t.me/89951508833" target="_blank" rel="noopener noreferrer">
-                  <Button size="icon" variant="outline">
-                    <Icon name="Send" className="h-4 w-4" />
-                  </Button>
-                </a>
-                <a href="https://wa.me/89951508833" target="_blank" rel="noopener noreferrer">
-                  <Button size="icon" variant="outline">
-                    <Icon name="MessageCircle" className="h-4 w-4" />
-                  </Button>
-                </a>
+              <div className="space-y-3">
+                <div className="text-sm text-muted-foreground">+7 929 698 16 21</div>
+                <div className="flex gap-3">
+                  <a href="https://t.me/+79296981621" target="_blank" rel="noopener noreferrer">
+                    <Button size="icon" variant="outline">
+                      <Icon name="Send" className="h-4 w-4" />
+                    </Button>
+                  </a>
+                  <a href="https://wa.me/79296981621" target="_blank" rel="noopener noreferrer">
+                    <Button size="icon" variant="outline">
+                      <Icon name="MessageCircle" className="h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
