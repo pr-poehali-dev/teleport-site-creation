@@ -132,10 +132,21 @@ export default function Index() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:89951508833" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
-              <Icon name="Phone" className="h-4 w-4" />
-              8-995-150-88-33
-            </a>
+            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2">
+              <a href="tel:84993947238" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+                <Icon name="Phone" className="h-4 w-4" />
+                8-499-394-72-38
+              </a>
+              <div className="flex items-center gap-2">
+                <a href="https://wa.me/79296981621" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs sm:text-sm font-semibold hover:text-accent transition-colors">
+                  <Icon name="MessageCircle" className="h-4 w-4" />
+                  +7 929 698 16 21
+                </a>
+                <a href="https://t.me/+79296981621" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                  <Icon name="Send" className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
             <nav className="hidden md:flex gap-6">
               <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
               <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
