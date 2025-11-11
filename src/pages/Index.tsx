@@ -132,7 +132,7 @@ export default function Index() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:84993947238" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+            <a href="tel:84993947238" className="hidden sm:flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
               <Icon name="Phone" className="h-4 w-4" />
               8-499-394-72-38
             </a>
@@ -141,6 +141,9 @@ export default function Index() {
               <a href="#tariffs" className="text-sm font-medium hover:text-accent transition-colors">Тарифы</a>
               <a href="#faq" className="text-sm font-medium hover:text-accent transition-colors">FAQ</a>
             </nav>
+            <Button size="sm" onClick={() => setIsOrderModalOpen(true)}>
+              Заказать звонок
+            </Button>
           </div>
         </div>
       </header>
