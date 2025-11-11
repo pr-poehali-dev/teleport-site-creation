@@ -132,9 +132,9 @@ export default function Index() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:84993947238" className="flex items-center gap-2 text-sm font-semibold hover:text-accent transition-colors">
+            <a href="tel:84993947238" className="flex items-center gap-2 text-xs sm:text-sm font-semibold hover:text-accent transition-colors">
               <Icon name="Phone" className="h-4 w-4" />
-              <span className="hidden sm:inline">8-499-394-72-38</span>
+              8-499-394-72-38
             </a>
             <nav className="hidden md:flex gap-6">
               <a href="#providers" className="text-sm font-medium hover:text-accent transition-colors">Провайдеры</a>
